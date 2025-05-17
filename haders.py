@@ -16,10 +16,10 @@ search = "отдам+бесплатно"
 @rt_avito.message(Command('start'))
 async def avito_start(message: types.Message):
     global secret_id
-    if str(message.from_user.id) not in secret_id:
-        await message.answer(f"{message.from_user.first_name} у вас нет прав пользоваться ботом!!! 🤔 \n ваш id {message.from_user.id}")
+    if str(message.from_user.id) not in secret_id: # type: ignore
+        await message.answer(f"{message.from_user.first_name} у вас нет прав пользоваться ботом!!! 🤔 \n ваш id {message.from_user.id}") # type: ignore
     else:
-        await message.answer(f"Привет {message.from_user.first_name} собираем информацию для стартового листа!!!\n ваш id {message.from_user.id}")
+        await message.answer(f"Привет {message.from_user.first_name} собираем информацию для стартового листа!!!\n ваш id {message.from_user.id}") # type: ignore
         while True:
             avito_dict = one_avito_parse(search)
             if not avito_dict:
@@ -30,7 +30,7 @@ async def avito_start(message: types.Message):
                 bot = message.bot
                 for i in avito_dict:
                     for user_id in secret_id:
-                        await bot.send_message(user_id,f"{i}\n{avito_dict[i]}")
+                        await bot.send_message(user_id,f"{i}\n{avito_dict[i]}") # type: ignore
                         await asyncio.sleep(1)
                 
             await asyncio.sleep(900)
