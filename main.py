@@ -7,8 +7,6 @@ from aiogram.types import BotCommand
 
 from haders import rt_avito
 
-
-prefix = "fRmzq"
 #secret_id = ["1086225549", "5271211921",]
 #search = "отдам+бесплатно"
 #=========================================================================
@@ -21,10 +19,9 @@ bot = Bot(token=token)
 menu_comands = [BotCommand (command= "start", description= "начать поиск"),
                 BotCommand(command="add", description= "добавить человека"),
                 BotCommand(command= "menu", description= "вызов меню"),
-                BotCommand(command="change_prefix", description="изменить префикс"),]
+                ]
 
 #bot = Bot(token=token)
-
 
 dp = Dispatcher()
 dp.include_routers(rt_avito,)
@@ -35,11 +32,6 @@ logging.basicConfig(level=logging.INFO)
 
 
             
-            
-
-    
-
-
 async def main():
     await bot.set_my_commands(commands=menu_comands,
         scope = types.BotCommandScopeAllPrivateChats())
